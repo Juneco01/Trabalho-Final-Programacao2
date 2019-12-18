@@ -1,6 +1,6 @@
 # TRABALHO FINAL PROGRAMAÇÃO 2 
 
-- O objetivo é criar um sistema basico de gerenciamento de Carros utilizando a linguagem Java,
+- O objetivo é criar um sistema basico de gerenciamento de Carros na linguagem Java,
 utilizando componentes de Interface Grafica e os conhecimentos de Orientação a Objeto adquiridos 
 durante o semestre.
 
