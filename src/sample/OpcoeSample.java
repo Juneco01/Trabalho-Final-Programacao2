@@ -87,6 +87,7 @@ public class OpcoeSample{
             );
 
         }else if( radioTerceiroCarro.isSelected()){
+
             if (CadastroSample.carros.size() >= 3){
                 int indice = 2;
                 labelOpcoes.setFont(new Font("comicsans", 15));
