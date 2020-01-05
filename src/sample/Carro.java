@@ -3,6 +3,7 @@ package sample;
 import javafx.beans.property.SimpleStringProperty;
 
 public class Carro {
+    //Atribuitos declarados como SimpleStringProperty para facilitar o uso na TableView
     private SimpleStringProperty proprietario = new SimpleStringProperty();
     private SimpleStringProperty placa = new SimpleStringProperty();
     private SimpleStringProperty cor = new SimpleStringProperty();
@@ -12,6 +13,7 @@ public class Carro {
     private SimpleStringProperty ano = new SimpleStringProperty();
     private SimpleStringProperty dataCompra = new SimpleStringProperty();
 
+    //Metodos Get e Set dos atributos, o get retorna uma String.
 
     public String getProprietario() {
         return proprietario.get();

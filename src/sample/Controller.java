@@ -29,11 +29,11 @@ public class Controller implements Initializable {
 
 
 
-
+    //Initialize da classe principal, coloca os dados do arquivo em uma arraylist de carros estatica
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
-        File listaCarros = new File("/home/juneco/IdeaProjects/trabalho/listagemcarros.csv");
+        File listaCarros = new File("listagemcarros.csv");
         try {
             Scanner leitor = new Scanner(listaCarros);
             String linhasDoArquivo;
@@ -55,7 +55,6 @@ public class Controller implements Initializable {
 
                     if (l[1].equals(cars.getPlaca())) {
                         i = 1;
-                        //System.out.println("Proprietario L eh "  + l[0] + " Placa dele: " + l[1] + "  Placa dentro de carros: " + cars.getPlaca() );
                         break;
                     }
                 }
@@ -70,7 +69,6 @@ public class Controller implements Initializable {
                 car.setAno(Integer.parseInt(l[6]));
                 car.setDataCompra(l[7]);
                 CadastroSample.carros.add(car);
-                System.out.println(CadastroSample.carros.size());
             }
             leitor.close();
         } catch (FileNotFoundException e) { System.out.println(e); }
@@ -125,6 +123,7 @@ public class Controller implements Initializable {
         }
     }
 
+    //Metodo que gera um alertBox caso o usuario queira sair do programa
     private boolean confirmSaida(){
 
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);

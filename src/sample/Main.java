@@ -17,6 +17,12 @@ import java.util.Optional;
 import java.util.ResourceBundle;
 import java.util.Scanner;
 
+/*
+    Trabalho Programação 2
+    Ano: 2019
+    Aluno: Antônio Rodrigues dos Santos Júnior
+    Professor: Msc Constantino Augusto
+*/
 public class Main extends Application{
 
 
@@ -45,7 +51,7 @@ public class Main extends Application{
         launch(args);
     }
 
-
+    //Metodo que gera um alertbox, caso o usuario queira sair do programa
     private boolean confirmSaida() {
 
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);

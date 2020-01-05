@@ -62,6 +62,7 @@ public class CadastroSample {
         }
     }
 
+    //Função que lida com o cadastro dos carros
     @FXML
     void handleCadastrarClick(ActionEvent event) throws  IOException{
         try {
@@ -90,16 +91,6 @@ public class CadastroSample {
                     carros.add(novoCarro);
                     mensagemCadastro.setText("Carro Cadastrado");
                     deletaField();
-                    for (Carro car : carros) {
-                        System.out.println("Proprietario: " + car.getProprietario());
-                        System.out.println("Chassi: " + car.getChassi());
-                        System.out.println("Marca: " + car.getMarca());
-                        System.out.println("Modelo: " + car.getModelo());
-                        System.out.println("Placa: " + car.getPlaca());
-                        System.out.println("Ano: " + car.getAno());
-                        System.out.println("Cor: " + car.getCor());
-                        System.out.println("Data de Compra: " + car.getDataCompra() + "\n");
-                    }
                 }
             }
         }catch (RuntimeException e){
@@ -107,10 +98,10 @@ public class CadastroSample {
         }
     }
 
-
+    //Função que seta todos os atributos de um objeto carro, retorna o carro no final.
     Carro criaCarro(){
-        Carro car = new Carro();
 
+        Carro car = new Carro();
         car.setAno(Integer.parseInt(anoField.getText()));
         car.setCor(corField.getText());
         car.setChassi(chassiField.getText());
@@ -119,11 +110,12 @@ public class CadastroSample {
         car.setPlaca(placaField.getText());
         car.setProprietario(propField.getText());
         car.setDataCompra(dataCompraField.getValue().toString());
-        System.out.println("Hello");
         return car;
     }
 
+    //Limpa os textFields apos um cadastro
     void deletaField(){
+
         corField.clear();
         chassiField.clear();
         propField.clear();
@@ -135,25 +127,29 @@ public class CadastroSample {
 
     }
 
-
+    //Função que verifica a placa com a expressão regular
     boolean verificaPlaca(String placa){
+
         Pattern pattern  = Pattern.compile("[A-Z]{3}[-][0-9]{4}");
         Matcher matcher = pattern.matcher(placa);
         return matcher.matches();
+
     }
 
+    //Verifica se não já existe um carro igual (com a mesma placa)
     boolean verificaCarroIgual(String placa){
+
         for (Carro cars : this.carros){
             System.out.println("Placa do for : " + cars.getPlaca() + "Placa da String: " + placa);
             if (cars.getPlaca().equals(placa)) {
-                System.out.println("Retornou falso");
                 return false;
             }
         }
+
         return true;
     };
 
-
+    //Adiciona o novo carro no arquivo de texto
     void gravaCsv(Carro car){
 
         try {
@@ -170,18 +166,17 @@ public class CadastroSample {
             pw.flush();
             pw.close();
 
-            System.out.println("Gravado com sucesso" + car.getProprietario());
         }catch (Exception e){
 
         }
 
     }
 
-
+    //Gera um alertBox de confirmação de cadastro
     private boolean confirmAlerta(Carro aux){
 
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-        alert.setTitle("Confirmação de Remoção");
+        alert.setTitle("Confirmação");
         alert.setHeaderText("Você realmente deseja Adicionar: " + aux.getProprietario()+ " ?");
         alert.setContentText(
                 "\n\nProprietario: " + aux.getProprietario() +
@@ -203,15 +198,13 @@ public class CadastroSample {
 
     }
 
+    //alertbox de confirmação de saida
     private boolean confirmSaida(){
 
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.setTitle("Janela de Confirmação");
         alert.setHeaderText("Você realmente deseja Voltar?");
-
         alert.setContentText("Dados não salvos serão perdidos");
-
-
 
         ButtonType botao1 = new ButtonType("Sim");
         ButtonType botao2 = new ButtonType("Não");

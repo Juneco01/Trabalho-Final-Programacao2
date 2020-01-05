@@ -55,6 +55,7 @@ public class OpcoeSample{
 
     }
 
+    //Verifica qual opção o usuario escolheu, e seta os textos na tela
     @FXML
     void handleIrClick(ActionEvent event) throws IOException{
         int quantCarros = CadastroSample.carros.size();
@@ -99,7 +100,7 @@ public class OpcoeSample{
                         " \nData da Compra: " + CadastroSample.carros.get(indice).getDataCompra()
                 );
             }else{
-                labelOpcoes.setFont(new Font("comicsans", 30));
+                labelOpcoes.setFont(new Font("comicsans", 20));
                 labelOpcoes.setText("O numero de carros cadastrados é menor que 3");
             }
         }else if(radioRemoveUltimo.isSelected()){
@@ -122,9 +123,6 @@ public class OpcoeSample{
             }
         }else if(radioRemoveTerceiro.isSelected()){
 
-
-
-
             if (CadastroSample.carros.size() >= 3) {
 
                 if (confirmAlerta(2)) {
@@ -140,7 +138,7 @@ public class OpcoeSample{
                     );
                 }
             }else{
-                labelOpcoes.setFont(new Font("comicsans", 30));
+                labelOpcoes.setFont(new Font("comicsans", 20));
                 labelOpcoes.setText("O numero de carros cadastrados é menor que 3");
             }
 
@@ -159,7 +157,7 @@ public class OpcoeSample{
 
 
 
-
+    //Função que recebe uma data e transforma em dias (usada para verificar qual compra foi feita primeiro)
     public int transformaEmDias(String data){
         String Sano =  ""; String Smes = ""; String Sdia = "";
         Sano += data.charAt(0); Sano += data.charAt(1); Sano += data.charAt(2); Sano += data.charAt(3);
@@ -177,6 +175,7 @@ public class OpcoeSample{
         return retorno;
     }
 
+    //Retorna o indice da compra mais antiga
     public  int indiceCompra(String tipoCompra){
 
         int menorV = transformaEmDias(CadastroSample.carros.get(0).getDataCompra());
@@ -186,7 +185,6 @@ public class OpcoeSample{
 
         if (tipoCompra.equals("Menor")) {
             for (Carro cars : CadastroSample.carros) {
-                System.out.println(cars.getDataCompra());
                 if (transformaEmDias(cars.getDataCompra()) < menorV) {
                     menorV = (transformaEmDias(cars.getDataCompra()));
                     indice = valor;
@@ -195,7 +193,6 @@ public class OpcoeSample{
             }
         }else {
             for (Carro cars : CadastroSample.carros) {
-                System.out.println(cars.getDataCompra());
                 if (transformaEmDias(cars.getDataCompra()) > menorV) {
                     menorV = (transformaEmDias(cars.getDataCompra()));
                     indice = valor;
@@ -210,7 +207,7 @@ public class OpcoeSample{
 
     }
 
-
+    //Função que recria(atualiza) o csv após algum veiculo ser deletado.
     public void excluiCSV(){
         String tempFile = "temp.txt";
         File oldfile = new File("listagemcarros.csv");
@@ -243,7 +240,7 @@ public class OpcoeSample{
         }catch(Exception e){}
 
     }
-
+    //Gera um alertBox caso o usuario queira sair do programa
     private boolean confirmAlerta(int indice){
         Carro aux = CadastroSample.carros.get(indice);
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);

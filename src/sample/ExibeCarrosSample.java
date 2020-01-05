@@ -27,7 +27,7 @@ public class ExibeCarrosSample implements Initializable {
 
 
 
-
+    //Initialize da classe que exibe os veiculos, cria a table view e percorre a arrayList com todas as informações
     @Override
     public void initialize(URL url, ResourceBundle rb){
 
@@ -41,13 +41,6 @@ public class ExibeCarrosSample implements Initializable {
         TableColumn<Carro,String> dataCompraCol = new TableColumn<>("DATACOMPRA");
 
         tableView.getColumns().addAll(propCol,placaCol,marcaCol,modeloCol,anoCol,chassiCol,corCol, dataCompraCol);
-
-
-
-        Carro car1 = new Carro();
-        car1.setProprietario("joao");
-        car1.setPlaca("ABC-331");
-
 
         final ObservableList<Carro> dados = FXCollections.observableArrayList();
         for (Carro carro : CadastroSample.carros){
